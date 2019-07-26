@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout::header">
+    <title>Show Project Issues Page</title>
+</head>
+
+<body>
+<div th:replace="layout::nav"></div>
+
+<h2 align="center">Project Issues List</h2><br/>
+<br/>
+<table class="table" style="width:100%">
+    <tr>
+        <th sec:authorize="hasAuthority('ADMIN')">Select</th>
+        <th>Project</th>
+        <th>Issue Name</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Start Date</th>
+        <th>Lead Developer</th>
+        <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
+    </tr>
+    <!--enhanced for loop-->
+    <tr th:each="issue : ${issues}">
+        <td sec:authorize="hasAuthority('ADMIN')">
+            <input type="checkbox">
+        </td>
+        <td th:text="${issue.project.projectname}"></td>
+        <td th:text="${issue.issuename}"></td>
+        <td th:text="${issue.description}"></td>
+        <td th:text="${issue.priority}"></td>
+        <td th:text="${issue.status}"></td>
+        <td th:text="${issue.startdate}"></td>
+        <td th:text="${issue.leaddeveloper}"></td>
+
+        <td sec:authorize="hasAuthority('ADMIN')">
+            <a th:href="@{/details/{id}(id=${issue.id})}">Details</a>-<!-- Details -->
+            <a th:href="@{/update/{id}(id=${issue.id})}">Edit</a>-<!-- Update -->
+            <a th:href="@{/delete/{id}(id=${issue.id})}">Delete</a><!-- Delete -->
+        </td>
+
+    </tr>
+</table>
+<br/>
+
+<div th:replace="layout::footer"></div>
+</div>
+</body>
+</html>

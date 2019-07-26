@@ -10,7 +10,19 @@
 <body>
 <div th:replace="layout::nav"></div>
 
-<h2>Index Page</h2>
+
+<h2 align="center">Project List</h2><br/>
+<br/>
+<table class="table" style="width:100%">
+
+    <!--enhanced for loop-->
+    <tr th:each="project : ${projects}">
+        <td>
+            <a th:href="@{/processfilter/{id}(id=${project.id})}">[[${project.projectname}]]</a><!-- Read -->
+        </td>
+    </tr>
+</table>
+<br/>
 
 <div th:replace="layout::footer"></div>
 </body>

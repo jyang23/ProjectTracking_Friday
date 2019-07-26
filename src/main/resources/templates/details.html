@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout::header">
+    <title>Details Page</title>
+</head>
+
+<body>
+<div th:replace="layout::nav"></div>
+<div class = "main">
+    <div class="container">
+        <h1>Employees</h1><br/>
+        <div class = "row container">
+            <div class="card m-2" style="width: 17rem;">
+                <div class="card-header bg-light"  style="background-color: #e3f2fd;"><td th:text = "${issue.id}"></td>: <td th:text = "${issue.issuename}"></td></div>
+                <div class="card-body">
+                    <small><b>Project: </b><td th:text = "${issue.project}"></td></small></br>
+                    <small><b>Description: </b><td th:text = "${issue.description}"></td></small></br>
+                    <small><b>Priority: </b><td th:text = "${issue.priority}"></td></small></br>
+                    <small><b>Status: </b><td th:text = "${issue.status}"></td></small></br>
+                    <small><b>Start Date: </b><td th:text = "${issue.startdate}"></td></small></br>
+                    <small><b>Lead Developer: </b><td th:text = "${issue.leaddeveloper}"></td></small></br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout::footer"></div>
+</div>
+</body>
+</html>
